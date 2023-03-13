@@ -6,6 +6,7 @@ const navDesktop = document.querySelector('.nav-desktop');
 const currentYear = new Date().getFullYear();
 const footerText = document.querySelector('.footer__text');
 const mobileLinks = document.querySelectorAll(".nav-mobile__link")
+
 function getYear() {
 	footerText.innerHTML = ` 2012-${currentYear} &copy Copyright by <span class="footer__text--decoration">
 	Crypto Brain 
