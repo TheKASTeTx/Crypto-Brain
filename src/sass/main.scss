@@ -80,6 +80,7 @@ section {
 		background: none;
 		border: none;
 		transition: color 0.3;
+		color: #000;
 		&:hover {
 			color: $pure-white;
 		}
@@ -232,6 +233,7 @@ section {
 		animation: pulse 2s infinite;
 		z-index: 5;
 		transition: box-shadow 0.3s;
+		border: 1px solid black;
 		&:hover {
 			box-shadow: 0 0 15px $gold-decoration;
 		}
@@ -372,9 +374,9 @@ section {
 	&__option {
 		padding: 0.5em;
 		color: $pure-white;
+		text-decoration: none;
 
 		&--link {
-			text-decoration: none;
 			cursor: pointer;
 			&:hover {
 				color: $gold-decoration;
