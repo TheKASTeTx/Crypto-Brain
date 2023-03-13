@@ -1,0 +1,516 @@
+@import './colors';
+@import './animation';
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	scroll-padding-top: 7em;
+}
+
+body {
+	position: relative;
+	font-family: 'Roboto', sans-serif;
+	background-color: $dark-bgc;
+	color: $pure-white;
+}
+button {
+	cursor: pointer;
+}
+.wrapper {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.section--hidden {
+	opacity: 0;
+	transform: translateY(7rem);
+}
+section {
+	transition: transform 0.4s, opacity 0.4s;
+}
+
+.nav-mobile {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transform: translateX(-102%);
+	transition: transform 0.3s;
+	color: white;
+	background-color: $pure-silver;
+	z-index: 52;
+
+	&--active {
+		transform: translateX(0);
+	}
+
+	&__link {
+		padding: 2em;
+		font-size: 3rem;
+		z-index: 26;
+		text-decoration: none;
+		color: $gold-decoration;
+		font-weight: bold;
+		text-shadow: 0 0 7px #000;
+		transition: color 0.3;
+		cursor: pointer;
+
+		&:hover {
+			color: $pure-white;
+		}
+	}
+	&__button {
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		padding: 0.3em;
+		font-size: 4.5rem;
+		background: none;
+		border: none;
+		transition: color 0.3;
+		&:hover {
+			color: $pure-white;
+		}
+	}
+}
+.nav {
+	position: sticky;
+	top: 0;
+	height: 7em;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	background-color: $dark-bgc;
+	font-family: 'Anton', sans-serif;
+	z-index: 50;
+
+	&__link {
+		display: none;
+		font-size: 1.7rem;
+		text-decoration: none;
+		color: $pure-white;
+		transition: color 0.2s, text-shadow 0.2s;
+		&:hover {
+			color: $gold-decoration;
+			text-shadow: 0 0 5px black;
+		}
+	}
+
+	&__boxlogo {
+		position: relative;
+		display: flex;
+		align-items: center;
+		height: 100%;
+		font-size: 2rem;
+	}
+	&__logo {
+		display: flex;
+		align-items: center;
+		margin-left: 30px;
+		font-size: 2rem;
+		text-shadow: 0 5px 8px black;
+		&--gold {
+			margin: 10px;
+			font-size: 2rem;
+			color: $gold-decoration;
+			// text-shadow: 0 5px 8px black;
+		}
+	}
+	&__icon {
+		font-size: 2rem;
+	}
+}
+
+.burger-btn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	padding: 1em;
+	background: none;
+	border: 1px solid transparent;
+	&:focus {
+		outline: none;
+		border: 1px solid $pure-white;
+		border-radius: 8px;
+	}
+	&:hover {
+		.burger-btn__bars::after,
+		.burger-btn__bars::before {
+			width: 100%;
+		}
+	}
+
+	&__box {
+		position: relative;
+		width: 40px;
+		height: 30px;
+	}
+
+	&__bars,
+	&__bars::after,
+	&__bars::before {
+		position: absolute;
+		right: 0;
+		height: 3px;
+		content: '';
+		background-color: $pure-white;
+		transition: width 0.3s;
+	}
+	&__bars {
+		width: 100%;
+		&::after {
+			top: 13px;
+			width: 60%;
+		}
+		&::before {
+			top: 27px;
+			width: 30%;
+		}
+	}
+}
+
+.header {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	text-align: center;
+
+	background-image: url(../img/header-mobile.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	&__shadow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.82);
+		z-index: 2;
+	}
+	&__container {
+		z-index: 5;
+	}
+	&__title {
+		margin-top: 1.5em;
+		font-size: 2.4rem;
+		color: $pure-white;
+	}
+	&__box {
+		margin: 6em 3em 2em 3em;
+	}
+	&__text {
+		font-size: 1.7rem;
+		&--gold {
+			font-size: 1.7rem;
+			font-weight: bold;
+			color: $gold-decoration;
+		}
+	}
+	&__button {
+		margin: 5em 1em;
+		padding: 1em 2em;
+		border-radius: 15px;
+		font-size: 2.2rem;
+		font-weight: bold;
+		background-color: $gold-decoration;
+		color: $dark-bgc;
+		animation: pulse 2s infinite;
+		z-index: 5;
+		transition: box-shadow 0.3s;
+		&:hover {
+			box-shadow: 0 0 15px $gold-decoration;
+		}
+	}
+	&__icon {
+		font-size: 2.2rem;
+	}
+}
+
+.aboutus {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 2.5rem;
+	background-color: $pure-silver;
+	width: 100%;
+	color: #000;
+
+	&__title {
+		margin: 1em;
+		color: $gold-decoration;
+		font-size: 3.9rem;
+		text-shadow: 0 0 7px #000;
+	}
+	&__text {
+		padding: 1.2em;
+	}
+	&__topic {
+		font-size: 2.5rem;
+		font-weight: bold;
+		color: $gold-decoration;
+		text-shadow: 0 0 7px #000;
+	}
+	&__box {
+		padding: 1em;
+		border-top: 2px solid black;
+	}
+}
+
+.howstart {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: $dark-bgc;
+	width: 100%;
+
+	&__title {
+		margin: 1em;
+		font-size: 2.9rem;
+		text-shadow: 0 0 5px #000;
+		color: $gold-decoration;
+		z-index: 2;
+	}
+	&__topic {
+		margin: 1em;
+		font-size: 2.8rem;
+		color: $gold-decoration;
+		font-weight: bold;
+	}
+	&__text {
+		padding: 1em;
+		font-size: 1.8rem;
+		color: #000;
+		font-weight: bold;
+	}
+	&__icon {
+		padding-top: 1em;
+		font-size: 2.5rem;
+		transition: text-shadow 0.4s;
+		i {
+			padding: 0.4em;
+			border: 1px solid $gold-decoration;
+			border-radius: 50%;
+			color: $gold-decoration;
+		}
+	}
+	&__box {
+		display: flex;
+		flex-direction: column;
+		margin: 3.4em;
+		max-width: 40em;
+		border-radius: 20px;
+		background-color: $pure-silver;
+		text-align: left;
+		border: 2px solid $gold-decoration;
+		box-shadow: 3px 3px 5px $gold-decoration;
+		transition: box-shadow 0.4s;
+		text-align: center;
+		z-index: 2;
+		&:hover {
+			box-shadow: -3px -3px 5px $gold-decoration;
+		}
+		&:hover .howstart__icon {
+			text-shadow: 0 0 50px $gold-decoration;
+		}
+	}
+	&__boxes {
+		padding-bottom: 4em;
+	}
+}
+
+.contact {
+	position: relative;
+	background-image: url(../img/contact-mobile.jpg);
+	background-size: cover;
+	background-position: center;
+	&__shadow {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		background-color: rgba(0, 0, 0, 0.42);
+	}
+
+	&__container {
+		position: relative;
+		padding: 2em;
+		z-index: 5;
+	}
+	&__title {
+		font-size: 2.4rem;
+		text-align: center;
+		padding: 1em;
+		color: $gold-decoration;
+		text-shadow: 0 0 5px black;
+	}
+	&__text {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		font-size: 2rem;
+	}
+	&__option {
+		padding: 0.5em;
+		color: $pure-white;
+
+		&--link {
+			text-decoration: none;
+			cursor: pointer;
+			&:hover {
+				color: $gold-decoration;
+			}
+		}
+	}
+}
+
+.footer {
+	padding: 0.3em;
+	font-size: 1.7rem;
+	text-align: center;
+	font-weight: bold;
+	background-color: $dark-bgc;
+	&__text {
+		&--decoration {
+			color: $gold-decoration;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.burger-btn {
+		display: none;
+	}
+
+	.nav {
+		justify-content: space-evenly;
+		&__link {
+			display: block;
+			font-size: 2.5rem;
+		}
+		&__logo {
+			font-size: 2.5rem;
+			&--gold {
+				font-size: 2.5rem;
+			}
+		}
+	}
+
+	.header {
+		&__title {
+			font-size: 4.1rem;
+		}
+
+		&__text {
+			font-size: 2.7rem;
+			padding: 2em 1em;
+		}
+		&__button {
+			padding: 1.5em 3em;
+			font-size: 3rem;
+		}
+	}
+
+	.howstart {
+		&__title {
+			margin: 2em 0;
+			font-size: 4.9rem;
+		}
+		&__topic {
+			font-size: 3.4rem;
+		}
+		&__text {
+			font-size: 2.4rem;
+		}
+		&__icon {
+			font-size: 3.5rem;
+
+			i {
+				border: 2px solid $gold-decoration;
+			}
+		}
+		&__boxes {
+			padding-bottom: 9em;
+		}
+	}
+
+	.aboutus {
+		font-size: 3.5rem;
+		background-color: $pure-silver;
+		width: 100%;
+		color: #000;
+
+		&__title {
+			margin: 1em;
+			color: $gold-decoration;
+			font-size: 4.9rem;
+			text-shadow: 0 0 7px #000;
+		}
+		&__text {
+			padding: 1.2em;
+		}
+		&__topic {
+			font-size: 3rem;
+			font-weight: bold;
+			color: $gold-decoration;
+			text-shadow: 0 0 7px #000;
+		}
+		&__box {
+			padding: 1em;
+			border-top: 2px solid black;
+		}
+	}
+
+	.contact {
+		background-image: url(../img/contact-desktop.jpg);
+
+		&__title {
+			font-size: 3.4rem;
+			padding: 2.5em;
+		}
+		&__text {
+			font-size: 2.8rem;
+			padding: 1.5em;
+		}
+		&__option {
+			padding: 0.8em;
+		}
+	}
+
+	.footer {
+		&__text {
+			font-size: 2.2rem;
+			padding: 0.5em;
+		}
+	}
+}
+
+@media (min-width: 1400px) {
+	.howstart {
+		&__boxes {
+			display: flex;
+		}
+		&__box {
+			min-width: 40em;
+		}
+	}
+}
